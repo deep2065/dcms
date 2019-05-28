@@ -1,0 +1,24 @@
+<div class="row">
+  <!-- form start -->
+  <form  [formGroup]="pageform" autocomplete="off" (ngSubmit)="savePage();">
+<div class="col-md-8">
+<div class="box box-primary">  
+    <div class="box-body">
+      <div class="form-group">
+        <label for="pagename">Page Name</label>
+        <input type="text" formControlName="name" class="form-control" id="pagename" placeholder="Enter Page Name">
+      </div>
+    </div>
+</div>
+</div>
+<div class="col-md-4">
+    <div class="box box-primary"> 
+    <div class="box-footer">
+        <input type="submit" class="btn btn-primary mr-5" value="Save">
+        <input type="submit" class="btn btn-success mr-5"value="Save & Edit">
+        <input type="submit" class="btn btn-warning"value="Save & New">
+      </div>
+      </div>
+</div>
+</form>
+</div>
