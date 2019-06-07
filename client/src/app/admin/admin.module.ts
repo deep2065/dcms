@@ -9,13 +9,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutModule } from './layout/layout.module';
 import { PageComponent } from './page/page.component';
 import { AdminComponent } from './admin.component';
+import { MenuComponent } from './menu/menu.component';
+import { AmenuModule } from './amenu/amenu.module';
 
 @NgModule({
   declarations: [
     LoginComponent,
     DashboardComponent,
     PageComponent,
-    AdminComponent
+    AdminComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import { AdminComponent } from './admin.component';
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    CKEditorModule
+    CKEditorModule,
+    AmenuModule
   ]
 })
 export class AdminModule { }

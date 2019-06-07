@@ -1,0 +1,25 @@
+<form [formGroup]="menuform" (ngSubmit)="menuSubmit()">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Menu Title</th>
+        <th>Menu Url</th>
+        <th>Menu Icon</th>
+        <th>Menu Permission</th>
+        <th>Menu ID</th>
+        <th><button class="btn btn-primary" (click)="addMore()"><i class="fa fa-plus"></i> Add More</button></th>
+      </tr>
+    </thead>
+    <tbody formArrayName="menuformarray">
+      <tr *ngFor="let item of menuformarray.controls; let pointIndex=index" [formGroupName]="pointIndex">
+        <td><input type="text" class="form-control"  formControlName="title"></td>
+        <td><input type="text" class="form-control"  formControlName="url"></td>
+        <td><input type="text" class="form-control"  formControlName="icon"></td>
+        <td><input type="text" class="form-control"  formControlName="permission"></td>
+        <td><input type="text" class="form-control"  formControlName="id"></td>
+        <td><button class="btn btn-danger" (click)="deleteRow(pointIndex)"><i class="fa fa-minus"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="submit" class="btn btn-primary btn-block" value="Save">
+  </form>

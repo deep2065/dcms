@@ -1,0 +1,7 @@
+table tr th:last-child{
+  text-align: right;
+}
+
+table tr td:last-child{
+  text-align: right;
+}

@@ -16,7 +16,7 @@ export class GlobleService {
       'Authorization':'DCMS Login',
       'Content-Type':'application/json; charset=utf-8',
       'Deepak':"Hi"
-    });    
+    });
     this.http.post(this.apiUrl+'login',data,{headers: headers}).subscribe(a=>{
       if(a['_id'])
       {
@@ -29,5 +29,13 @@ export class GlobleService {
         callback(false);
       }
     });
+  }
+
+  insertMenu(data,callback){
+    const headers = new HttpHeaders({
+      'Authorization':'DCMS Login',
+      'Content-Type':'application/json; charset=utf-8'
+    });
+    this.http.post(this.apiUrl+'menus',data,{headers: headers}).subscribe(a=>callback(a));
   }
 }
