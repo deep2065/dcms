@@ -19,6 +19,10 @@ var UserSchema = new mongoose.Schema(
                     type:String,
                     required:true
             },
+            role:{
+                    type:String,
+                    required:true
+            },
             is_login:{
                     type:String,
                     required:true
@@ -32,7 +36,7 @@ var UserSchema = new mongoose.Schema(
                     required:true
             },
             is_active:{
-                    type:Number,
+                    type:Boolean,
                     required:true
             }
         });

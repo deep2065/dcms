@@ -7,9 +7,19 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { RolecreateComponent } from './rolecreate/rolecreate.component';
+import { RolePipe } from 'src/app/pipes/role.pipe';
+import { GetrolePipe } from 'src/app/pipes/getRole.pipe';
 
 @NgModule({
-  declarations: [RoleComponent, PermissionComponent, UsercreateComponent, UserlistComponent, RolecreateComponent],
+  declarations: [
+    RoleComponent,
+    PermissionComponent,
+    UsercreateComponent,
+    UserlistComponent,
+    RolecreateComponent,
+    RolePipe,
+    GetrolePipe
+  ],
   imports: [
     CommonModule,
     FormsModule,

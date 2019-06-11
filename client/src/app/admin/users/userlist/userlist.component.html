@@ -1,5 +1,5 @@
 <div class="text-right mb-20">
-  <a [routerLink]="['create']" class="btn btn-success pull-right"><i class="fa fa-plus"></i> 
+  <a [routerLink]="['create']" class="btn btn-success pull-right"><i class="fa fa-plus"></i>
     Add New User</a>
 <div class="clearfix"></div>
 </div>
@@ -13,13 +13,20 @@
               <th>Name</th>
               <th>Username</th>
               <th>Email</th>
-              <th>Role</th>
-              <th>Permissions</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-              
+              <tr *ngFor="let user of users;">
+                <td>{{user.name}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <a *ngIf="modulepermi.indexOf(modulename+'.edit') !== -1" [routerLink]="['edit',user._id]" class="btn btn-primary mr-5" title="Edit User"><i class="fa fa-edit"></i></a>
+                    <!-- <a [routerLink]="['view/',user._id]" class="btn btn-primary mr-5" title="View User"><i class="fa fa-search"></i></a> -->
+                    <button *ngIf="modulepermi.indexOf(modulename+'.delete') !== -1" (click)="deleteUser(user._id,im)" class="btn btn-danger" title="Delete User"><i class="fa fa-trash"></i></button>
+                </td>
+              </tr>
           </tbody>
           </table>
     </div>

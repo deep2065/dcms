@@ -11,22 +11,28 @@ import { ModulelistComponent } from './module/modulelist/modulelist.component';
 import { ModulecreateComponent } from './module/modulecreate/modulecreate.component';
 import { RoleComponent } from './users/role/role.component';
 import { RolecreateComponent } from './users/rolecreate/rolecreate.component';
+import { UsercreateComponent } from './users/usercreate/usercreate.component';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   {path:"admin",redirectTo:"admin/login",pathMatch:"full"},
+  {path:'admin/login',component:LoginComponent},
   {
     path:'admin',
+    canActivate:[AdminGuard],
     component:AdminComponent,
     children:[
-      {path:'login',component:LoginComponent},
       {path:'dashboard',component:DashboardComponent},
       {path:'page',component:PageComponent},
       {path:'menu',component:ListComponent},
       {path:'menu/create',component:CreateComponent},
       {path:'menu/submenu/:id/:menutype',component:CreateComponent},
       {path:'users', component:UserlistComponent},
+      {path:'users/create', component:UsercreateComponent},
+      {path:'users/edit/:id', component:UsercreateComponent},
       {path:'user/role', component:RoleComponent},
       {path:'user/role/create', component:RolecreateComponent},
+      {path:'user/role/edit/:id', component:RolecreateComponent},
       {path:'module', component:ModulelistComponent},
       {path:'module/modulecreate',component:ModulecreateComponent},
       {path:'module/moduleedit/:id',component:ModulecreateComponent}

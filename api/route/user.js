@@ -1,6 +1,7 @@
 var route = require("express").Router();
 var user = require('../model/userModel');
 var mtoken = require('../model/tokenModel');
+var roles = require("../model/roleModel");
 
 var randomstring = require("randomstring");
 
@@ -54,19 +55,42 @@ res.json(responce);
 });
 });
 
-// route.get("/login",(req,res)=>{
-// user.create({
-//     name:"Deepak Kumar",
-//     username:"deepak",
-//     email:"deepak.khatri@cyfuture.com",
-//     password:"123456",
-//     is_login:"0",
-//     session_id:"1",
-//     login_datetime:new Date(),
-//     is_active:1
-// }).then((err,doc)=>{
-//     res.send(doc);
-// });
-// });
+route.post("/users",(req,res)=>{
+    var indata = req.body;
+    user.findOneAndUpdate({email:indata.email},indata,{upsert: true, new: true, runValidators: true},function(err,doc){
 
-module.exports = route;
+    });
+    res.json(indata);
+});
+
+route.get("/users", async (req,res)=>{
+    var indata = await user.find({});
+    res.json(indata);
+});
+
+route.get("/users/:id", async (req,res)=>{
+    var mmenu = await user.findOne({_id:req.params.id});
+    res.json(mmenu);
+    });
+
+route.delete("/users/:id", async (req,res)=>{
+    var mod = await user.findOneAndRemove({_id:req.params.id});
+    res.json({status:"ok"});
+});
+
+
+
+route.get("/chkpermission/:per/:userid",async (req,res)=>{
+    var userid = req.params.userid;
+    var permi = req.params.per;
+    var chk = 0;
+    var muser = await user.findOne({"_id":userid});
+    var r = await roles.findOne({"_id":muser.role});
+    var per = Object.keys(r.roles);
+        if(per.indexOf(permi)!== -1){
+            chk=1;  
+         }
+    res.json({status:chk,data:per});
+})
+
+module.exports = route; 

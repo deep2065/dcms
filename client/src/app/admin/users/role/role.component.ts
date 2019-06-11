@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobleService } from 'src/app/services/globle.service';
 
 @Component({
   selector: 'app-role',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoleComponent implements OnInit {
 
-  constructor() { }
+  roles:any;
+  constructor(private service :GlobleService) {
+    this.service.getAll("roles",(res)=>{
+      this.roles =res;
+    })
+   }
 
   ngOnInit() {
   }
+
+  deleteRole(id,ind){
+    if(confirm("Are you sure to delete this role ?")){
+      this.service.deleteById("roles",id,(res)=>{
+        this.roles.splice(ind,1);
+      })
+    }
+  }
+
+
 
 }

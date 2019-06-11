@@ -1,10 +1,10 @@
 <div class="text-right mb-20">
-    <a [routerLink]="['create']" class="btn btn-success pull-right"><i class="fa fa-plus"></i> 
+    <a [routerLink]="['create']" class="btn btn-success pull-right"><i class="fa fa-plus"></i>
       Add New Role</a>
   <div class="clearfix"></div>
   </div>
   <div class="panel panel-primary">
-  
+
       <div class="panel-heading">  Role List </div>
       <div class="panel-body">
         <table class="table" id="example1">
@@ -16,9 +16,17 @@
               </tr>
             </thead>
             <tbody>
-                
+              <tr *ngFor="let role of roles;">
+                <td>{{role.name | titlecase}}</td>
+                <td>
+                  <p *ngFor="let per of role.roles | role; let im =index;">{{per}}</p>
+                </td>
+                <td>
+                    <a [routerLink]="['edit/',role._id]" class="btn btn-primary mr-5" title="Edit Role"><i class="fa fa-edit"></i></a>
+                    <button (click)="deleteRole(role._id,im)" class="btn btn-danger" title="Delete Role"><i class="fa fa-trash"></i></button>
+                </td>
+              </tr>
             </tbody>
             </table>
       </div>
   </div>
-  

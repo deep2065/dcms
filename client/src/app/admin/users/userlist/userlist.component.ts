@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobleService } from 'src/app/services/globle.service';
 declare var $;
 
 @Component({
@@ -7,13 +8,32 @@ declare var $;
   styleUrls: ['./userlist.component.css']
 })
 export class UserlistComponent implements OnInit {
-
-  constructor() { }
+users:any;
+modulename='user';
+modulepermi=[];
+  constructor(private service:GlobleService) {
+    this.service.checkPermission(this.modulename+".list",localStorage.getItem("userid"),(res)=>{
+      this.modulepermi = res;
+      console.log(this.modulepermi);
+    });
+    this.service.getAll("users",(res)=>{
+      this.users=res;
+    })
+   }
 
   ngOnInit() {
     $(()=>{
       $("#example1").DataTable();
     })
+  }
+
+  deleteUser(id,ind)
+  {
+    if(confirm("Are you sure to delete this user ?")){
+      this.service.deleteById("users",id,(res)=>{
+        this.users.splice(ind,1);
+      })
+    }
   }
 
 }

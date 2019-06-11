@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http'
 export class GlobleService {
   apiUrl = 'http://localhost:4201/api/';
   isLogin=false;
-  constructor(private http:HttpClient) {
-    if(localStorage.getItem('login')=="1") this.isLogin=true;
+  constructor(private http:HttpClient,private router:Router) {
+    if(sessionStorage.getItem('login')=="1") this.isLogin=true;
    }
 
   login(data,callback){
@@ -21,9 +22,9 @@ export class GlobleService {
       if(a['_id'])
       {
         this.isLogin=true;
-        localStorage.setItem('login',"1");
-        localStorage.setItem('userid',a['_id']);
-        localStorage.setItem('dcmstoken',a['token']);
+        sessionStorage.setItem('login',"1");
+        sessionStorage.setItem('userid',a['_id']);
+        sessionStorage.setItem('dcmstoken',a['token']);
         callback(true);
       }else{
         callback(false);
@@ -49,5 +50,16 @@ export class GlobleService {
       'Content-Type':'application/json; charset=utf-8'
     });
     this.http.post(this.apiUrl+col,data,{headers: headers}).subscribe(a=>callback(a));
+  }
+
+  checkPermission(per,userid,callback){
+    this.http.get(this.apiUrl+"chkpermission/"+per+"/"+userid).subscribe(a=>{
+      if(a['status']!="1"){
+        this.router.navigate(['admin/dashboard']);
+        throw "Permission Error";
+      }else{
+        callback(a['data']);
+      }
+    })
   }
 }

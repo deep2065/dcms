@@ -4,20 +4,36 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li 
+        <li
         [routerLinkActive]="['active']">
           <a [routerLink]="['dashboard']">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
+        <li
+        [routerLinkActive]="['active']">
+          <a [routerLink]="['menu']">
+            <i class="fa fa-dashboard"></i> <span>Admin Menu</span>
+          </a>
+        </li>
         <li *ngFor="let menu of sidemenu; let im=index;"
         [routerLinkActive]="['active']" class="{{menu.hassubmenu?'treeview':''}}">
-          <a [routerLink]="[menu.url]">
+        <ng-template #disabledLink>
+            <a href="#">
+                <i class="{{menu.icon}}"></i> <span>{{menu.title}}</span>
+                <span *ngIf="menu.hassubmenu" class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+              </a>
+          </ng-template>
+
+          <a *ngIf="!menu.hassubmenu; else disabledLink" [routerLink]="[menu.url]">
             <i class="{{menu.icon}}"></i> <span>{{menu.title}}</span>
             <span *ngIf="menu.hassubmenu" class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
+
           <ul *ngIf="menu.hassubmenu" class="treeview-menu">
               <li *ngFor="let smenu of menu.submenus" class="{{!smenu?'d-hide':''}}">
                 <a href="{{smenu?.url}}">
