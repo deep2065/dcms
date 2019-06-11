@@ -1,0 +1,21 @@
+<form [formGroup]="moduleForm" (ngSubmit)="moduleSubmit()">
+  <div class="form-gruop">
+    <label>Module Name</label>
+    <input type="text" class="form-control" formControlName="name">
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th><button class="btn btn-primary" (click)="addMore()"><i class="fa fa-plus"></i> Add More</button></th>
+      </tr>
+    </thead>
+    <tbody formArrayName="modulepermission" >
+      <tr *ngFor="let item of modulepermission.controls; let pointIndex=index" [formGroupName]="pointIndex">
+        <td><input type="text" class="form-control" formControlName="permission"></td>
+        <td><button class="btn btn-danger" (click)="deleteRow(pointIndex)"><i class="fa fa-minus"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="submit" class="btn btn-primary btn-block" value="Save">
+  </form>

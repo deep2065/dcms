@@ -10,28 +10,23 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li 
-        [routerLinkActive]="['active']">
-          <a [routerLink]="['page']">
-            <i class="fa fa-files-o"></i> <span>Pages</span>
+        <li *ngFor="let menu of sidemenu; let im=index;"
+        [routerLinkActive]="['active']" class="{{menu.hassubmenu?'treeview':''}}">
+          <a [routerLink]="[menu.url]">
+            <i class="{{menu.icon}}"></i> <span>{{menu.title}}</span>
+            <span *ngIf="menu.hassubmenu" class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
           </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+          <ul *ngIf="menu.hassubmenu" class="treeview-menu">
+              <li *ngFor="let smenu of menu.submenus" class="{{!smenu?'d-hide':''}}">
+                <a href="{{smenu?.url}}">
+                  <i class="fa fa-circle-o"></i>
+                  {{smenu?.title}}
+                </a>
+              </li>
           </ul>
         </li>
-        
       </ul>
     </section>
     <!-- /.sidebar -->

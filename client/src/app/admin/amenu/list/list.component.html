@@ -5,5 +5,32 @@
   <div class="panel panel-primary">
 
       <div class="panel-heading">  Menu List </div>
-      <div class="panel-body">Panel Content</div>
+      <div class="panel-body">
+        <table class="table" id="example1">
+            <thead>
+              <tr>
+                <th>Menu Title</th>
+                <th>Menu Url</th>
+                <th>Menu Icon</th>
+                <th>Menu Permission</th>
+                <th>Menu ID</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let menu of menus; let im = index">
+                    <td>{{menu.title}}</td>
+                    <td>{{menu.url}}</td>
+                    <td><i class="{{menu.icon}}"></i></td>
+                    <td>{{menu.permission}}</td>
+                    <td>{{menu.id}}</td>
+                    <td>
+                        <a [routerLink]="['submenu/'+menu._id+'/1']" class="btn btn-primary mr-5" title="Add Submenu"><i class="fa fa-plus"></i></a>
+                        <a [routerLink]="['submenu/'+menu._id+'/2']" class="btn btn-primary mr-5" title="Edit menu"><i class="fa fa-edit"></i></a>
+                        <button (click)="deleteMenu(menu._id,im)" class="btn btn-danger" title="Delete menu"><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+      </div>
   </div>

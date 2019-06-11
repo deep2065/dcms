@@ -1,10 +1,11 @@
 var express = require("express");
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var cors = require('cors');
 
 var app = express();
 var http = require("http").createServer(app);
-
+app.use(cors());
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

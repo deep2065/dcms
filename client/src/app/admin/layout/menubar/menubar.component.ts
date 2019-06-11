@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobleService } from 'src/app/services/globle.service';
 
 @Component({
   selector: 'app-menubar',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menubar.component.css']
 })
 export class MenubarComponent implements OnInit {
-
-  constructor() { }
+sidemenu:any=[];
+  constructor(private service:GlobleService) { }
 
   ngOnInit() {
+    this.service.getAll("menus",(res)=>{
+      this.sidemenu=res;
+    });
   }
 
 }

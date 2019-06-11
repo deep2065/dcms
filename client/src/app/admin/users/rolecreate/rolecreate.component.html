@@ -1,0 +1,31 @@
+<form #roleform="ngForm" (ngSubmit)="saveRole(roleform.value)">
+  <div class="form-group">
+    <label>Role Name</label>
+    <input type="text" name="name" class="form-control">
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Module Name</th>
+        <th>Module Permission</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of modules; let mid=index">
+        <td>
+            <label for="pmenu{{mid}}" >
+          <input type="checkbox" id="pmenu{{mid}}" name="modulename" value="{{item.name}}" ngModel> 
+          {{item.name}}
+          </label>
+        </td>
+        <td>
+          <label for="menu{{ind}}" *ngFor="let per of item.modulepermission; let ind=index;" class="permiclass mr-5">
+            <input type="checkbox" id="menu{{ind}}" name="role[permi][]" value="{{item.name}}.{{per.permission}}" ngModel>
+            {{per.permission}}
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="submit" class="btn btn-primary btn-block" value="Save">
+  </form>

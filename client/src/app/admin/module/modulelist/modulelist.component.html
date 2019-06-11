@@ -1,0 +1,32 @@
+<div class="text-right mb-20">
+  <a [routerLink]="['modulecreate']" class="btn btn-success pull-right"><i class="fa fa-plus"></i> 
+    Add New Module</a>
+<div class="clearfix"></div>
+</div>
+<div class="panel panel-primary">
+
+    <div class="panel-heading">  Modules List </div>
+    <div class="panel-body">
+      <table class="table" id="example1">
+          <thead>
+            <tr>
+              <th>Module Name</th>
+              <th>Module Premission</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let mod of moduls; let mid =index;">
+                <td>{{mod.name}}</td>
+                <td>
+                  <p *ngFor="let permi of mod.modulepermission">{{permi.permission}}</p>
+                </td>
+                <td>
+                  <a [routerLink]="['moduleedit',mod._id]" class="btn btn-primary mr-5"><i class="fa fa-edit"></i></a>
+                  <button class="btn btn-danger mr-5" (click)="deleteModule(mod._id,mid)"><i class="fa fa-trash"></i></button>
+                </td>
+              </tr>
+          </tbody>
+          </table>
+    </div>
+</div>

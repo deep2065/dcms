@@ -31,11 +31,23 @@ export class GlobleService {
     });
   }
 
-  insertMenu(data,callback){
+
+  getAll(col,callback){
+    this.http.get(this.apiUrl+col).subscribe(a=>callback(a));
+  }
+  getById(col,id,callback){
+    this.http.get(this.apiUrl+col+"/"+id).subscribe(a=>callback(a));
+  }
+  deleteById(col,id,callback){
+    this.http.delete(this.apiUrl+col+"/"+id).subscribe(a=>callback(a));
+  }
+
+
+  insert(col,data,callback){
     const headers = new HttpHeaders({
       'Authorization':'DCMS Login',
       'Content-Type':'application/json; charset=utf-8'
     });
-    this.http.post(this.apiUrl+'menus',data,{headers: headers}).subscribe(a=>callback(a));
+    this.http.post(this.apiUrl+col,data,{headers: headers}).subscribe(a=>callback(a));
   }
 }

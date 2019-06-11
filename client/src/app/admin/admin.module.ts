@@ -11,6 +11,8 @@ import { PageComponent } from './page/page.component';
 import { AdminComponent } from './admin.component';
 import { MenuComponent } from './menu/menu.component';
 import { AmenuModule } from './amenu/amenu.module';
+import { UsersModule } from './users/users.module';
+import { ModuleModule } from './module/module.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { AmenuModule } from './amenu/amenu.module';
     FormsModule,
     ReactiveFormsModule,
     CKEditorModule,
-    AmenuModule
+    AmenuModule,
+    UsersModule,
+    ModuleModule
   ]
 })
 export class AdminModule { }
