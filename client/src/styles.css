@@ -8,6 +8,7 @@
 @import url("assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic");
 
+
 .ng-invalid{
   border-color:#a94442;
 }

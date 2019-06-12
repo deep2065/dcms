@@ -13,6 +13,8 @@ import { MenuComponent } from './menu/menu.component';
 import { AmenuModule } from './amenu/amenu.module';
 import { UsersModule } from './users/users.module';
 import { ModuleModule } from './module/module.module';
+import { MediaModule } from './media/media.module';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { ModuleModule } from './module/module.module';
     CKEditorModule,
     AmenuModule,
     UsersModule,
-    ModuleModule
+    ModuleModule,
+    MediaModule
   ]
 })
 export class AdminModule { }

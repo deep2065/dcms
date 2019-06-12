@@ -13,6 +13,7 @@ import { RoleComponent } from './users/role/role.component';
 import { RolecreateComponent } from './users/rolecreate/rolecreate.component';
 import { UsercreateComponent } from './users/usercreate/usercreate.component';
 import { AdminGuard } from './admin.guard';
+import { MedialistComponent } from './media/medialist/medialist.component';
 
 const routes: Routes = [
   {path:"admin",redirectTo:"admin/login",pathMatch:"full"},
@@ -35,7 +36,8 @@ const routes: Routes = [
       {path:'user/role/edit/:id', component:RolecreateComponent},
       {path:'module', component:ModulelistComponent},
       {path:'module/modulecreate',component:ModulecreateComponent},
-      {path:'module/moduleedit/:id',component:ModulecreateComponent}
+      {path:'module/moduleedit/:id',component:ModulecreateComponent},
+      {path:'media',component:MedialistComponent}
     ]
   }
 ];

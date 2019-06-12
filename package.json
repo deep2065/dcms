@@ -14,8 +14,11 @@
     "express": "^4.17.0",
     "fs": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",
+    "mkdirp": "^0.5.1",
     "mongoose": "^5.5.10",
+    "multiparty": "^4.2.1",
     "node-sass": "^4.12.0",
-    "randomstring": "^1.1.5"
+    "randomstring": "^1.1.5",
+    "rimraf": "^2.6.3"
   }
 }
