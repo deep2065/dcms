@@ -7,22 +7,23 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutModule } from './layout/layout.module';
-import { PageComponent } from './page/page.component';
 import { AdminComponent } from './admin.component';
 import { MenuComponent } from './menu/menu.component';
 import { AmenuModule } from './amenu/amenu.module';
 import { UsersModule } from './users/users.module';
 import { ModuleModule } from './module/module.module';
 import { MediaModule } from './media/media.module';
+import { PagetitleComponent } from './pagetitle/pagetitle.component';
+import { PageModule } from './page/page.module';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     DashboardComponent,
-    PageComponent,
     AdminComponent,
-    MenuComponent
+    MenuComponent,
+    PagetitleComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +35,8 @@ import { MediaModule } from './media/media.module';
     AmenuModule,
     UsersModule,
     ModuleModule,
-    MediaModule
+    MediaModule,
+    PageModule
   ]
 })
 export class AdminModule { }

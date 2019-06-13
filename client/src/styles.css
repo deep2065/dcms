@@ -1,12 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("assets/bower_components/bootstrap/dist/css/bootstrap.min.css");
-@import url("assets/bower_components/font-awesome/css/font-awesome.min.css");
+/* @import url("assets/bower_components/font-awesome/css/font-awesome.min.css"); */
 @import url("assets/bower_components/Ionicons/css/ionicons.min.css");
 @import url("assets/dist/css/AdminLTE.min.css");
 @import url("assets/plugins/iCheck/square/blue.css");
 @import url("assets/dist/css/skins/_all-skins.min.css");
 @import url("assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic");
+@import url("https://use.fontawesome.com/releases/v5.6.3/css/all.css");
+@import url("assets/bower_components/bootstrap-daterangepicker/daterangepicker.css");
+@import url("assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css");
+@import url("assets/plugins/timepicker/bootstrap-timepicker.min.css");
+@import url("assets/bower_components/select2/dist/css/select2.min.css");
 
 
 .ng-invalid{
@@ -28,4 +33,8 @@
 }
 .mr-5{
   margin-right: 5px;
+}
+
+.backdrop, .file-manager-backdrop{
+  z-index: 9999;
 }

@@ -14,6 +14,8 @@ app.use(function (req, res, next) {
     next();
   });
 
+  app.use(express.static(__dirname+"/files"));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

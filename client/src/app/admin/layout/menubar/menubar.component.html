@@ -7,20 +7,20 @@
         <li
         [routerLinkActive]="['active']">
           <a [routerLink]="['dashboard']">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fas fa-tachometer-alt"></i> <span> Dashboard</span>
           </a>
         </li>
         <li
         [routerLinkActive]="['active']">
           <a [routerLink]="['menu']">
-            <i class="fa fa-dashboard"></i> <span>Admin Menu</span>
+            <i class="fas fa-list"></i> <span> Admin Menu</span>
           </a>
         </li>
         <li *ngFor="let menu of sidemenu; let im=index;"
         [routerLinkActive]="['active']" class="{{menu.hassubmenu?'treeview':''}}">
         <ng-template #disabledLink>
             <a href="#">
-                <i class="{{menu.icon}}"></i> <span>{{menu.title}}</span>
+                <i class="{{menu.icon}}"></i> <span> {{menu.title}}</span>
                 <span *ngIf="menu.hassubmenu" class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                   </span>
@@ -28,7 +28,7 @@
           </ng-template>
 
           <a *ngIf="!menu.hassubmenu; else disabledLink" [routerLink]="[menu.url]">
-            <i class="{{menu.icon}}"></i> <span>{{menu.title}}</span>
+            <i class="{{menu.icon}}"></i> <span> {{menu.title}}</span>
             <span *ngIf="menu.hassubmenu" class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -37,7 +37,7 @@
           <ul *ngIf="menu.hassubmenu" class="treeview-menu">
               <li *ngFor="let smenu of menu.submenus" class="{{!smenu?'d-hide':''}}">
                 <a href="{{smenu?.url}}">
-                  <i class="fa fa-circle-o"></i>
+                  <i class="far fa-circle"></i>
                   {{smenu?.title}}
                 </a>
               </li>

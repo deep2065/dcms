@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ConfigInterface, TreeModel } from 'ng6-file-man';
+import { AdminbredcrubService } from 'src/app/services/adminbredcrub.service';
+import { GlobleService } from 'src/app/services/globle.service';
 
 @Component({
   selector: 'app-medialist',
@@ -9,27 +11,18 @@ import { ConfigInterface, TreeModel } from 'ng6-file-man';
 })
 export class MedialistComponent implements OnInit {
   tree:any;
-  constructor() { 
-    const treeConfig: ConfigInterface = {
-      baseURL: 'http://localhost:4201/',
-      api: {
-        listFile: 'api/media/list',
-        uploadFile: 'api/media/upload',
-        downloadFile: 'api/media/download',
-        deleteFile: 'api/media/remove',
-        createFolder: 'api/media/directory',
-        renameFile: 'api/media/rename',
-        searchFiles: 'api/media/search'
-      },
-      options: {
-        allowFolderDownload: true,
-        showFilesInsideTree: true
-      }
-    };
+  constructor(private bred:AdminbredcrubService, private service:GlobleService) {
+    const treeConfig: ConfigInterface = this.service.media;
     this.tree = new TreeModel(treeConfig)
   }
 
   ngOnInit() {
+    this.bred.changeMessage("Media Management");
+    this.bred.bred.push({
+      title:"Media",
+      url:"media"
+    });
+    this.bred.changeBredcrub();
   }
 
 }

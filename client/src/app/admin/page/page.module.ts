@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { PageRoutingModule } from './page-routing.module';
-import { ListComponent } from './list/list.component';
-import { CreateComponent } from './create/create.component';
-import { PageComponent } from './page.component';
+import { PagelistComponent } from './pagelist/pagelist.component';
+import { CoreModule } from 'src/app/core/core.module';
+import { PagecreateComponent } from './pagecreate/pagecreate.component';
+import { FileManagerModule } from 'ng6-file-man';
 
 @NgModule({
-  declarations: [
-    ListComponent, 
-    CreateComponent,
-    PageComponent
-  ],
+  declarations: [PagelistComponent, PagecreateComponent],
   imports: [
     CommonModule,
-    PageRoutingModule
+    CoreModule,
+    FileManagerModule
   ]
 })
 export class PageModule { }

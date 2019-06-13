@@ -7,7 +7,24 @@ import { Router } from '@angular/router';
 })
 export class GlobleService {
   apiUrl = 'http://localhost:4201/api/';
+  baseurl = 'http://localhost:4201';
   isLogin=false;
+  media={
+    baseURL: this.apiUrl,
+    api: {
+      listFile: 'media/list',
+      uploadFile: 'media/upload',
+      downloadFile: 'media/download',
+      deleteFile: 'media/remove',
+      createFolder: 'media/directory',
+      renameFile: 'media/rename',
+      searchFiles: 'media/search'
+    },
+    options: {
+      allowFolderDownload: false,
+      showFilesInsideTree: false
+    }
+  };
   constructor(private http:HttpClient,private router:Router) {
     if(sessionStorage.getItem('login')=="1") this.isLogin=true;
    }

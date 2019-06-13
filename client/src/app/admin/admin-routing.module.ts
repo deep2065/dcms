@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PageComponent } from './page/page.component';
 import { AdminComponent } from './admin.component';
 import { ListComponent } from './amenu/list/list.component';
 import { CreateComponent } from './amenu/create/create.component';
@@ -14,6 +13,8 @@ import { RolecreateComponent } from './users/rolecreate/rolecreate.component';
 import { UsercreateComponent } from './users/usercreate/usercreate.component';
 import { AdminGuard } from './admin.guard';
 import { MedialistComponent } from './media/medialist/medialist.component';
+import { PagelistComponent } from './page/pagelist/pagelist.component';
+import { PagecreateComponent } from './page/pagecreate/pagecreate.component';
 
 const routes: Routes = [
   {path:"admin",redirectTo:"admin/login",pathMatch:"full"},
@@ -24,7 +25,8 @@ const routes: Routes = [
     component:AdminComponent,
     children:[
       {path:'dashboard',component:DashboardComponent},
-      {path:'page',component:PageComponent},
+      {path:'page',component:PagelistComponent},
+      {path:'page/create',component:PagecreateComponent},
       {path:'menu',component:ListComponent},
       {path:'menu/create',component:CreateComponent},
       {path:'menu/submenu/:id/:menutype',component:CreateComponent},

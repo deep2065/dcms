@@ -41,7 +41,13 @@
               "src/assets/dist/js/pages/dashboard2.js",
               "src/assets/dist/js/demo.js",
               "src/assets/bower_components/datatables.net/js/jquery.dataTables.min.js",
-              "src/assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"
+              "src/assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js",
+              "src/assets/bower_components/select2/dist/js/select2.full.min.js",
+              "src/assets/bower_components/moment/min/moment.min.js",
+              "src/assets/bower_components/bootstrap-daterangepicker/daterangepicker.js",
+              "src/assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
+              "src/assets/plugins/timepicker/bootstrap-timepicker.min.js",
+              "src/assets/plugins/timepicker/bootstrap-timepicker.min.js"
             ]
           },
           "configurations": {
