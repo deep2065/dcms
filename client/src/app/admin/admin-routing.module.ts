@@ -15,6 +15,7 @@ import { AdminGuard } from './admin.guard';
 import { MedialistComponent } from './media/medialist/medialist.component';
 import { PagelistComponent } from './page/pagelist/pagelist.component';
 import { PagecreateComponent } from './page/pagecreate/pagecreate.component';
+import { ThemelistComponent } from './themes/themelist/themelist.component';
 
 const routes: Routes = [
   {path:"admin",redirectTo:"admin/login",pathMatch:"full"},
@@ -39,7 +40,8 @@ const routes: Routes = [
       {path:'module', component:ModulelistComponent},
       {path:'module/modulecreate',component:ModulecreateComponent},
       {path:'module/moduleedit/:id',component:ModulecreateComponent},
-      {path:'media',component:MedialistComponent}
+      {path:'media',component:MedialistComponent},
+      {path:'theme',component:ThemelistComponent}
     ]
   }
 ];

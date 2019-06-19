@@ -15,6 +15,7 @@ import { ModuleModule } from './module/module.module';
 import { MediaModule } from './media/media.module';
 import { PagetitleComponent } from './pagetitle/pagetitle.component';
 import { PageModule } from './page/page.module';
+import { ThemesModule } from './themes/themes.module';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { PageModule } from './page/page.module';
     UsersModule,
     ModuleModule,
     MediaModule,
-    PageModule
+    PageModule,
+    ThemesModule
   ]
 })
 export class AdminModule { }
