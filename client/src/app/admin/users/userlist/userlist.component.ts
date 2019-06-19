@@ -14,7 +14,6 @@ modulepermi=[];
   constructor(private service:GlobleService) {
     this.service.checkPermission(this.modulename+".list",localStorage.getItem("userid"),(res)=>{
       this.modulepermi = res;
-      console.log(this.modulepermi);
     });
     this.service.getAll("users",(res)=>{
       this.users=res;

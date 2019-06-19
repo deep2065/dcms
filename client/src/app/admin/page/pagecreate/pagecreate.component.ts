@@ -3,6 +3,8 @@ import { GlobleService } from 'src/app/services/globle.service';
 import { AdminbredcrubService } from 'src/app/services/adminbredcrub.service';
 import { Validators } from '@angular/forms';
 import { ConfigInterface, TreeModel } from 'ng6-file-man';
+import { Router, ActivatedRoute } from '@angular/router';
+import { DatashareService } from 'src/app/services/datashare.service';
 
 @Component({
   selector: 'app-pagecreate',
@@ -12,18 +14,24 @@ import { ConfigInterface, TreeModel } from 'ng6-file-man';
 export class PagecreateComponent implements OnInit {
   pageform:any;
   tree:any;
-  constructor(private service:GlobleService, private bred:AdminbredcrubService) {
+  constructor(private service:GlobleService, private bred:AdminbredcrubService,private router:Router, private route:ActivatedRoute, private ds:DatashareService) {
+    this.route.params.subscribe(a=>{
+      if(a){
+        this.service.getById("page",a.id,(res)=>{
+          this.ds.changedata(res);
+        })
+      }
+    })
     const treeConfig: ConfigInterface = this.service.media;
     this.tree = new TreeModel(treeConfig)
     this.pageform =[
-      {name:"name",type:"text",label:"Name",validation:[Validators.required]},
-      {name:"country",type:"select",label:"Country",validation:[Validators.required],chooise:[{value:"1",lable:"India"}]},
-      {name:"description",type:"editor",label:"Description",validation:[Validators.required]},
+      {name:"name",type:"text",label:{name:"Name",class:"control-lable required"},validation:[Validators.required]},
+      {name:"description",type:"textarea",label:{name:"Description",class:"control-lable required"},validation:[Validators.required]},
+      {name:"content",type:"editor",label:{name:"Content",class:"control-lable required"},validation:[Validators.required]},
       ];
       this.pageform['fbreak']=[
-        {name:"image",type:"mediaimage",label:"Image",validation:[Validators.required]},
-        {name:"publish_date",type:"date",label:"Publish Date",validation:[Validators.required]},
-        {name:"unpublish_date",type:"date",label:"Unpublish Date",validation:[Validators.required]},
+        {name:"status",type:"select",label:{name:"Status",class:"control-lable required"},validation:[Validators.required],chooise:[{value:"1",lable:"Active"},{value:'2',lable:"Deactive"}]},
+        {name:"image",type:"mediaimage",label:{name:"Image",class:"control-lable required"},validation:[Validators.required]},
       ];
   }
 
@@ -37,7 +45,9 @@ export class PagecreateComponent implements OnInit {
   }
 
   saveForm(data){
-    console.log(data);
+    this.service.insert("page",data,(res)=>{
+     this.router.navigate(['admin/page']);
+    });
   }
 
 }

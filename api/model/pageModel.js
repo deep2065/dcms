@@ -25,14 +25,6 @@ var PageSchema = new mongoose.Schema(
                 type:String,
                 required:true
             },
-            parent_id :{
-                type:String,
-                required:true
-            },
-            featured :{
-                type:String,
-                required:true
-            },
             description :{
                 type:String,
                 required:true

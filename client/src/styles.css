@@ -38,3 +38,8 @@
 .backdrop, .file-manager-backdrop{
   z-index: 9999;
 }
+
+.required::after{
+content: '*';
+color: #a94442;
+}

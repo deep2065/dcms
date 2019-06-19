@@ -28,6 +28,7 @@ const routes: Routes = [
       {path:'dashboard',component:DashboardComponent},
       {path:'page',component:PagelistComponent},
       {path:'page/create',component:PagecreateComponent},
+      {path:'page/create/:id',component:PagecreateComponent},
       {path:'menu',component:ListComponent},
       {path:'menu/create',component:CreateComponent},
       {path:'menu/submenu/:id/:menutype',component:CreateComponent},

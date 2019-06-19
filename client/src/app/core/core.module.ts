@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ngx-ckeditor';
 import { FileManagerModule } from 'ng6-file-man';
 import { TableComponent } from './table/table.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [FormsComponent, InputComponent, TableComponent],
@@ -14,11 +15,13 @@ import { TableComponent } from './table/table.component';
     FormsModule,
     ReactiveFormsModule,
     CKEditorModule,
-    FileManagerModule
+    FileManagerModule,
+    RouterModule
   ],
   exports:[
     FormsComponent,
-    InputComponent
+    InputComponent,
+    TableComponent
 
   ]
 })

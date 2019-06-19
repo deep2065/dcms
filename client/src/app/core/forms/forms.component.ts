@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 import { GlobleService } from 'src/app/services/globle.service';
+import { DatashareService } from 'src/app/services/datashare.service';
 declare var $,select2,moment,daterangepicker,datepicker;
 @Component({
   selector: 'app-forms',
@@ -13,9 +14,10 @@ export class FormsComponent implements OnInit {
 @Input('tree') tree:any;
 @Output() saveevent= new EventEmitter<any>();
 mform:FormGroup;
-  constructor(private formb:FormBuilder,private service :GlobleService) { }
+  constructor(private formb:FormBuilder,private service :GlobleService, private ds:DatashareService) { }
 
   ngOnInit() {
+
     var fc={};
     this.form.map(f=>{
       fc[f.name]=['',f.validation];
@@ -26,7 +28,29 @@ mform:FormGroup;
         fc[f.name]=['',f.validation];
       });
     }
+    fc['created_at']=[new Date()];
+    fc['updated_at']=[new Date()];
+    fc['user_id']=[sessionStorage.getItem("userid")];
+    fc['updated_by']=[sessionStorage.getItem("userid")];
     this.mform= this.formb.group(fc);
+
+    this.ds.currentdata.subscribe(a=>{
+      if(Object.keys(a).length>0){
+        this.mform.controls['created_at'].disable({onlySelf:true});
+        this.mform.controls['user_id'].disable({onlySelf:true});
+        this.form.map(f=>{
+          this.mform.controls[f.name].setValue(a[f.name]);
+        });
+        if(this.form['fbreak'])
+        {
+          this.form['fbreak'].map(f=>{
+            this.mform.controls[f.name].setValue(a[f.name]);
+          });
+        }
+
+      }
+    });
+
     this.jqueryinit();
   }
 
@@ -38,7 +62,6 @@ mform:FormGroup;
   }
 
   itemClicked(event,name){
-    console.log(name);
     if(event.type="select"){
       if(!event.node.isFolder)
       {
