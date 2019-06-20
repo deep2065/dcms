@@ -30,7 +30,7 @@ modulepermi=[];
       var table = $("#mytableid").DataTable({
       "processing": true,
       "serverSide": true,
-      "ajax": this.service.apiUrl+'page',
+      "ajax": _self.service.apiUrl+_self.tabledata.modulename,
       "columnDefs": [ {
         "targets": -1,
         "data": null,

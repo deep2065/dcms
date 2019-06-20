@@ -79,4 +79,12 @@ export class GlobleService {
       }
     })
   }
+
+  getAutocomplete(data,callback){
+    var t = data.split(".")[0];
+    var col = data.split(".")[1];
+    this.http.get(this.apiUrl+t+"/autocomplete/"+col).subscribe(a=>{
+      callback(a);
+    })
+  }
 }

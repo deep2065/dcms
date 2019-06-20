@@ -43,3 +43,11 @@
 content: '*';
 color: #a94442;
 }
+.tag{
+  width: auto;
+  padding: 5px;
+  float: left;
+}
+.tag::after{
+  content: ",";
+}

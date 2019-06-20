@@ -16,6 +16,11 @@ import { MedialistComponent } from './media/medialist/medialist.component';
 import { PagelistComponent } from './page/pagelist/pagelist.component';
 import { PagecreateComponent } from './page/pagecreate/pagecreate.component';
 import { ThemelistComponent } from './themes/themelist/themelist.component';
+import { PostlistComponent } from './post/postlist/postlist.component';
+import { PostcreateComponent } from './post/postcreate/postcreate.component';
+import { CategorylistComponent } from './post/categorylist/categorylist.component';
+import { GallerylistComponent } from './gallery/gallerylist/gallerylist.component';
+import { GallerycreateComponent } from './gallery/gallerycreate/gallerycreate.component';
 
 const routes: Routes = [
   {path:"admin",redirectTo:"admin/login",pathMatch:"full"},
@@ -29,9 +34,16 @@ const routes: Routes = [
       {path:'page',component:PagelistComponent},
       {path:'page/create',component:PagecreateComponent},
       {path:'page/create/:id',component:PagecreateComponent},
+      {path:'post',component:PostlistComponent},
+      {path:'post/create',component:PostcreateComponent},
+      {path:'post/create/:id',component:PostcreateComponent},
+      {path:'post/category',component:CategorylistComponent},
       {path:'menu',component:ListComponent},
       {path:'menu/create',component:CreateComponent},
       {path:'menu/submenu/:id/:menutype',component:CreateComponent},
+      {path:'gallery',component:GallerylistComponent},
+      {path:'gallery/create',component:GallerycreateComponent},
+      {path:'gallery/create/:id',component:GallerycreateComponent},
       {path:'users', component:UserlistComponent},
       {path:'users/create', component:UsercreateComponent},
       {path:'users/edit/:id', component:UsercreateComponent},

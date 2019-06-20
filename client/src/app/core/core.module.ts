@@ -7,21 +7,26 @@ import { CKEditorModule } from 'ngx-ckeditor';
 import { FileManagerModule } from 'ng6-file-man';
 import { TableComponent } from './table/table.component';
 import { RouterModule } from '@angular/router';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { FilesizePipe } from '../pipes/filesize.pipe';
 
 @NgModule({
-  declarations: [FormsComponent, InputComponent, TableComponent],
+  declarations: [FormsComponent, InputComponent, TableComponent,
+    FilesizePipe],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     CKEditorModule,
     FileManagerModule,
-    RouterModule
+    RouterModule,
+    NgxFileDropModule
   ],
   exports:[
     FormsComponent,
     InputComponent,
-    TableComponent
+    TableComponent,
+
 
   ]
 })

@@ -4,6 +4,8 @@ import { EventEmitter } from '@angular/core';
 import { GlobleService } from 'src/app/services/globle.service';
 import { DatashareService } from 'src/app/services/datashare.service';
 declare var $,select2,moment,daterangepicker,datepicker;
+import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
@@ -71,6 +73,14 @@ mform:FormGroup;
     }
   }
 
+  gallery(event,name){
+    console.log(event);
+  }
+
+  selectimages(){
+
+  }
+
   getImage(name){
     if(this.mform.controls[name].value)
     {
@@ -83,10 +93,98 @@ mform:FormGroup;
     this.mform.controls[name].patchValue(event.target.value);
   }
 
+  public files: NgxFileDropEntry[] = [];
+
+  mfiles = [];
+
+  public dropped(files: NgxFileDropEntry[]) {
+    this.files = files;
+    for (const droppedFile of files) {
+
+      // Is it a file?
+      if (droppedFile.fileEntry.isFile) {
+        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+        fileEntry.file((file: File) => {
+
+            var reader = new FileReader();
+            reader.onload = ()=>{
+              var dataURL = reader.result;
+              this.mfiles.push({"name":file.name,"size":file.size,"url":dataURL});
+            };
+            reader.readAsDataURL(file);
+
+          const formData = new FormData();
+          formData.append('gallery', file, droppedFile.relativePath);
+
+
+        });
+      }
+    }
+  }
+
+  public fileOver(event){
+    //console.log(event);
+  }
+
+  public fileLeave(event){
+   // console.log(event);
+  }
+
 
   jqueryinit(){
     var _self = this;
+
     $(()=>{
+
+      $(".autocomplete").each((k,v)=>{
+        var tmodel = $(v).attr("type");
+        _self.service.getAutocomplete(tmodel,(res)=>{
+          $(v).autocomplete({
+            source: res
+          });
+        });
+      })
+
+      function split( val ) {
+        return val.split( /,\s*/ );
+      }
+      function extractLast( term ) {
+        return split( term ).pop();
+      }
+      $(".autocompletemulti").each((k,v)=>{
+        var tmodel = $(v).attr("type");
+        _self.service.getAutocomplete(tmodel,(res)=>{
+          $(v).on( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                $( this ).autocomplete( "instance" ).menu.active ) {
+              event.preventDefault();
+            }
+          })
+          .autocomplete({
+            minLength: 0,
+            source: function( request, response ) {
+              // delegate back to autocomplete, but extract the last term
+              response( $.ui.autocomplete.filter(
+                res, extractLast( request.term ) ) );
+            },
+            focus: function() {
+              // prevent value inserted on focus
+              return false;
+            },
+            select: function( event, ui ) {
+              var terms = split( this.value );
+              // remove the current input
+              terms.pop();
+              // add the selected item
+              terms.push( ui.item.value );
+              // add placeholder to get the comma-and-space at the end
+              terms.push( "" );
+              this.value = terms.join( ", " );
+              return false;
+            }
+          });
+        });
+      });
       //Initialize Select2 Elements
       //$('.select2').select2()
 
@@ -152,7 +250,12 @@ mform:FormGroup;
       //Timepicker
       $('.timepicker').timepicker({
         showInputs: false
-      })
+      });
+      $("#filemanager div button").hide();
+      $("#openfilemanager").click(function(e){
+        $("#filemanager div button").click();
+      });
+
     })
   }
 
