@@ -16,6 +16,7 @@ import { PageModule } from './page/page.module';
 import { ThemesModule } from './themes/themes.module';
 import { PostModule } from './post/post.module';
 import { GalleryModule } from './gallery/gallery.module';
+import { MenuModule } from './menu/menu.module';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { GalleryModule } from './gallery/gallery.module';
     PageModule,
     ThemesModule,
     PostModule,
-    GalleryModule
+    GalleryModule,
+    MenuModule
   ]
 })
 export class AdminModule { }

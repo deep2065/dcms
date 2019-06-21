@@ -21,6 +21,8 @@ import { PostcreateComponent } from './post/postcreate/postcreate.component';
 import { CategorylistComponent } from './post/categorylist/categorylist.component';
 import { GallerylistComponent } from './gallery/gallerylist/gallerylist.component';
 import { GallerycreateComponent } from './gallery/gallerycreate/gallerycreate.component';
+import { MenulistComponent } from './menu/menulist/menulist.component';
+import { MenucreateComponent } from './menu/menucreate/menucreate.component';
 
 const routes: Routes = [
   {path:"admin",redirectTo:"admin/login",pathMatch:"full"},
@@ -41,6 +43,9 @@ const routes: Routes = [
       {path:'menu',component:ListComponent},
       {path:'menu/create',component:CreateComponent},
       {path:'menu/submenu/:id/:menutype',component:CreateComponent},
+      {path:'websitemenu',component:MenulistComponent},
+      {path:'websitemenu/create',component:MenucreateComponent},
+      {path:'websitemenu/submenu/:id/:menutype',component:MenucreateComponent},
       {path:'gallery',component:GallerylistComponent},
       {path:'gallery/create',component:GallerycreateComponent},
       {path:'gallery/create/:id',component:GallerycreateComponent},

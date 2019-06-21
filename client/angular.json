@@ -48,7 +48,8 @@
               "src/assets/bower_components/bootstrap-daterangepicker/daterangepicker.js",
               "src/assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
               "src/assets/plugins/timepicker/bootstrap-timepicker.min.js",
-              "src/assets/plugins/timepicker/bootstrap-timepicker.min.js"
+              "src/assets/plugins/timepicker/bootstrap-timepicker.min.js",
+              "./node_modules/hammerjs/hammer.min.js"
             ]
           },
           "configurations": {
